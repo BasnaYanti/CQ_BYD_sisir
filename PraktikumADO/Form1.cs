@@ -46,5 +46,31 @@ namespace PraktikumADO
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        // PRAKTIKUM 2: Menghitung Jumlah Mahasiswa (ExecuteScalar)
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Koneksi();
+                conn.Open();
+
+                // Query untuk menghitung jumlah baris di tabel Mahasiswa
+                string query = "SELECT COUNT(*) FROM Mahasiswa";
+                cmd = new SqlCommand(query, conn);
+
+                // ExecuteScalar mengambil satu nilai dari baris pertama kolom pertama
+                int jumlah = (int)cmd.ExecuteScalar();
+
+                // Menampilkan hasil ke TextBox txtHasil
+                txtHasil.Text = jumlah.ToString();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
     }
 }
