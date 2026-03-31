@@ -63,7 +63,7 @@ namespace PraktikumADO
                 int jumlah = (int)cmd.ExecuteScalar();
 
                 // Menampilkan hasil ke TextBox txtHasil
-                txtHasil.Text = jumlah.ToString();
+                txtHasill.Text = jumlah.ToString();
 
                 conn.Close();
             }
@@ -86,7 +86,7 @@ namespace PraktikumADO
                 cmd = new SqlCommand(query, conn);
 
                 int jumlah = (int)cmd.ExecuteScalar();
-                txtHasil.Text = jumlah.ToString();
+                txtHasill.Text = jumlah.ToString();
 
                 conn.Close();
             }
@@ -134,7 +134,30 @@ namespace PraktikumADO
                 cmd = new SqlCommand(query, conn);
 
                 int jumlah = (int)cmd.ExecuteScalar();
-                txtHasil.Text = jumlah.ToString();
+                txtHasill.Text = jumlah.ToString();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        // LATIHAN 2: Update SKS Mata Kuliah (ExecuteNonQuery)
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Koneksi();
+                conn.Open();
+
+                // Query untuk memperbarui SKS mata kuliah tertentu
+                string query = "UPDATE MataKuliah SET SKS = 4 WHERE KodeMK = 'IF210101'";
+                cmd = new SqlCommand(query, conn);
+
+                int hasil = cmd.ExecuteNonQuery();
+                MessageBox.Show("Jumlah data terupdate: " + hasil);
 
                 conn.Close();
             }
