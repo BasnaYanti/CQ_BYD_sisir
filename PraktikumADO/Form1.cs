@@ -13,7 +13,9 @@ namespace PraktikumADO
 {
     public partial class Form1 : Form
     {
-        // Mendeklarasikan variabel koneksi dan command secara global
+        // ==========================================
+        // DEKLARASI VARIABEL GLOBAL
+        // ==========================================
         SqlConnection conn;
         SqlCommand cmd;
 
@@ -30,7 +32,11 @@ namespace PraktikumADO
             );
         }
 
-        // PRAKTIKUM 1: Membuka Koneksi (Dengan Error Handling)
+        // ==========================================
+        // BAGIAN TUGAS PRAKTIKUM UTAMA
+        // ==========================================
+
+        // PRAKTIKUM 1: Membuka Koneksi
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -42,7 +48,6 @@ namespace PraktikumADO
             }
             catch (Exception ex)
             {
-                // Menampilkan pesan jika terjadi kesalahan koneksi
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
@@ -54,17 +59,10 @@ namespace PraktikumADO
             {
                 Koneksi();
                 conn.Open();
-
-                // Query untuk menghitung jumlah baris di tabel Mahasiswa
                 string query = "SELECT COUNT(*) FROM Mahasiswa";
                 cmd = new SqlCommand(query, conn);
-
-                // ExecuteScalar mengambil satu nilai dari baris pertama kolom pertama
                 int jumlah = (int)cmd.ExecuteScalar();
-
-                // Menampilkan hasil ke TextBox txtHasil
-                txtHasil.Text = jumlah.ToString();
-
+                txtHasill.Text = jumlah.ToString();
                 conn.Close();
             }
             catch (Exception ex)
@@ -80,14 +78,10 @@ namespace PraktikumADO
             {
                 Koneksi();
                 conn.Open();
-
-                // Query untuk menghitung jumlah baris di tabel MataKuliah
                 string query = "SELECT COUNT(*) FROM MataKuliah";
                 cmd = new SqlCommand(query, conn);
-
                 int jumlah = (int)cmd.ExecuteScalar();
-                txtHasil.Text = jumlah.ToString();
-
+                txtHasill.Text = jumlah.ToString();
                 conn.Close();
             }
             catch (Exception ex)
@@ -103,17 +97,10 @@ namespace PraktikumADO
             {
                 Koneksi();
                 conn.Open();
-
-                // Query untuk mengubah alamat mahasiswa berdasarkan NIM tertentu
                 string query = "UPDATE Mahasiswa SET Alamat='Yogyakarta' WHERE NIM='23110100001'";
                 cmd = new SqlCommand(query, conn);
-
-                // ExecuteNonQuery mengembalikan jumlah baris yang terpengaruh/terupdate
                 int hasil = cmd.ExecuteNonQuery();
-
-                // MENAMBAHKAN NOTIFIKASI HASIL UPDATE (Langkah Commit 10)
                 MessageBox.Show("Jumlah baris terpengaruh : " + hasil);
-
                 conn.Close();
             }
             catch (Exception ex)
@@ -122,20 +109,21 @@ namespace PraktikumADO
             }
         }
 
-        // LATIHAN 1: Menghitung Jumlah Dosen (ExecuteScalar)
+        // ==========================================
+        // BAGIAN LATIHAN PRAKTIKUM Mandiri
+        // ==========================================
+
+        // LATIHAN 1: Menghitung Jumlah Dosen
         private void button1_Click_1(object sender, EventArgs e)
         {
             try
             {
                 Koneksi();
                 conn.Open();
-
                 string query = "SELECT COUNT(*) FROM Dosen";
                 cmd = new SqlCommand(query, conn);
-
                 int jumlah = (int)cmd.ExecuteScalar();
-                txtHasil.Text = jumlah.ToString();
-
+                txtHasill.Text = jumlah.ToString();
                 conn.Close();
             }
             catch (Exception ex)
@@ -144,21 +132,17 @@ namespace PraktikumADO
             }
         }
 
-        // LATIHAN 2: Update SKS Mata Kuliah (ExecuteNonQuery)
+        // LATIHAN 2: Update SKS Mata Kuliah
         private void button5_Click(object sender, EventArgs e)
         {
             try
             {
                 Koneksi();
                 conn.Open();
-
-                // Query untuk memperbarui SKS mata kuliah tertentu
                 string query = "UPDATE MataKuliah SET SKS = 4 WHERE KodeMK = 'IF210101'";
                 cmd = new SqlCommand(query, conn);
-
                 int hasil = cmd.ExecuteNonQuery();
                 MessageBox.Show("Jumlah data terupdate: " + hasil);
-
                 conn.Close();
             }
             catch (Exception ex)
@@ -167,21 +151,17 @@ namespace PraktikumADO
             }
         }
 
-        // LATIHAN 3: Insert Program Studi (ExecuteNonQuery)
+        // LATIHAN 3: Insert Program Studi
         private void button6_Click(object sender, EventArgs e)
         {
             try
             {
                 Koneksi();
                 conn.Open();
-
-                // Query untuk menambahkan data program studi baru
                 string query = "INSERT INTO ProgramStudi VALUES ('MI01','Manajemen Informatika')";
                 cmd = new SqlCommand(query, conn);
-
                 int hasil = cmd.ExecuteNonQuery();
                 MessageBox.Show("Data berhasil ditambahkan: " + hasil);
-
                 conn.Close();
             }
             catch (Exception ex)
