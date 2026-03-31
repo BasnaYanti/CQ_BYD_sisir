@@ -21,5 +21,13 @@ namespace PraktikumADO
         {
             InitializeComponent();
         }
+
+        // Method untuk konfigurasi koneksi ke database
+        private void Koneksi()
+        {
+            conn = new SqlConnection(
+                "Data Source=LAPTOP-UJA021TQ\\BASNAYANTI;Initial Catalog=DBAkademikADO;Integrated Security=True"
+            );
+        }
     }
 }
