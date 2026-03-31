@@ -63,7 +63,7 @@ namespace PraktikumADO
                 int jumlah = (int)cmd.ExecuteScalar();
 
                 // Menampilkan hasil ke TextBox txtHasil
-                txtHasil.Text = jumlah.ToString();
+                txtHasill.Text = jumlah.ToString();
 
                 conn.Close();
             }
