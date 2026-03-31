@@ -111,6 +111,9 @@ namespace PraktikumADO
                 // ExecuteNonQuery mengembalikan jumlah baris yang terpengaruh/terupdate
                 int hasil = cmd.ExecuteNonQuery();
 
+                // MENAMBAHKAN NOTIFIKASI HASIL UPDATE (Langkah Commit 10)
+                MessageBox.Show("Jumlah baris terpengaruh : " + hasil);
+
                 conn.Close();
             }
             catch (Exception ex)
