@@ -30,13 +30,21 @@ namespace PraktikumADO
             );
         }
 
-        // PRAKTIKUM 1: Membuka Koneksi (Implementasi Dasar)
+        // PRAKTIKUM 1: Membuka Koneksi (Dengan Error Handling)
         private void button1_Click(object sender, EventArgs e)
         {
-            Koneksi();
-            conn.Open();
-            MessageBox.Show("Koneksi ke database berhasil");
-            conn.Close();
+            try
+            {
+                Koneksi();
+                conn.Open();
+                MessageBox.Show("Koneksi ke database berhasil");
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                // Menampilkan pesan jika terjadi kesalahan koneksi
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }
