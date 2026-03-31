@@ -29,5 +29,14 @@ namespace PraktikumADO
                 "Data Source=LAPTOP-UJA021TQ\\BASNAYANTI;Initial Catalog=DBAkademikADO;Integrated Security=True"
             );
         }
+
+        // PRAKTIKUM 1: Membuka Koneksi (Implementasi Dasar)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Koneksi();
+            conn.Open();
+            MessageBox.Show("Koneksi ke database berhasil");
+            conn.Close();
+        }
     }
 }
