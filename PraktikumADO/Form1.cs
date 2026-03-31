@@ -63,7 +63,7 @@ namespace PraktikumADO
                 int jumlah = (int)cmd.ExecuteScalar();
 
                 // Menampilkan hasil ke TextBox txtHasil
-                txtHasill.Text = jumlah.ToString();
+                txtHasil.Text = jumlah.ToString();
 
                 conn.Close();
             }
@@ -86,7 +86,7 @@ namespace PraktikumADO
                 cmd = new SqlCommand(query, conn);
 
                 int jumlah = (int)cmd.ExecuteScalar();
-                txtHasill.Text = jumlah.ToString();
+                txtHasil.Text = jumlah.ToString();
 
                 conn.Close();
             }
@@ -134,7 +134,7 @@ namespace PraktikumADO
                 cmd = new SqlCommand(query, conn);
 
                 int jumlah = (int)cmd.ExecuteScalar();
-                txtHasill.Text = jumlah.ToString();
+                txtHasil.Text = jumlah.ToString();
 
                 conn.Close();
             }
@@ -158,6 +158,29 @@ namespace PraktikumADO
 
                 int hasil = cmd.ExecuteNonQuery();
                 MessageBox.Show("Jumlah data terupdate: " + hasil);
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        // LATIHAN 3: Insert Program Studi (ExecuteNonQuery)
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Koneksi();
+                conn.Open();
+
+                // Query untuk menambahkan data program studi baru
+                string query = "INSERT INTO ProgramStudi VALUES ('MI01','Manajemen Informatika')";
+                cmd = new SqlCommand(query, conn);
+
+                int hasil = cmd.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil ditambahkan: " + hasil);
 
                 conn.Close();
             }
