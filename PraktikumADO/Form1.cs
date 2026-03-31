@@ -63,7 +63,30 @@ namespace PraktikumADO
                 int jumlah = (int)cmd.ExecuteScalar();
 
                 // Menampilkan hasil ke TextBox txtHasil
-                txtHasill.Text = jumlah.ToString();
+                txtHasil.Text = jumlah.ToString();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        // PRAKTIKUM 3: Menghitung Jumlah Mata Kuliah (ExecuteScalar)
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Koneksi();
+                conn.Open();
+
+                // Query untuk menghitung jumlah baris di tabel MataKuliah
+                string query = "SELECT COUNT(*) FROM MataKuliah";
+                cmd = new SqlCommand(query, conn);
+
+                int jumlah = (int)cmd.ExecuteScalar();
+                txtHasil.Text = jumlah.ToString();
 
                 conn.Close();
             }
