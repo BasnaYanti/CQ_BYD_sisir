@@ -95,5 +95,28 @@ namespace PraktikumADO
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        // PRAKTIKUM 4: Update Alamat Mahasiswa (ExecuteNonQuery)
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Koneksi();
+                conn.Open();
+
+                // Query untuk mengubah alamat mahasiswa berdasarkan NIM tertentu
+                string query = "UPDATE Mahasiswa SET Alamat='Yogyakarta' WHERE NIM='23110100001'";
+                cmd = new SqlCommand(query, conn);
+
+                // ExecuteNonQuery mengembalikan jumlah baris yang terpengaruh/terupdate
+                int hasil = cmd.ExecuteNonQuery();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
     }
 }
